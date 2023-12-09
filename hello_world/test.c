@@ -1,31 +1,30 @@
-#include <8051.h>
+#include <mcs51reg.h>
 
 
-char n = 0x40;
+char n = 0x40; // P3.6
 
 void delay(void);
 
 void main(void) {
     while(1){
         P3 |= n;
-        delay();
-        delay();
-        delay();
-        delay();
-        delay();
-        delay();
+        delay();  // 530ms delay
+        delay();  //
+        delay();  //
+        delay();  //
+        delay();  //
         P3 &= ~n;
-        delay();
-        delay();
-        delay();
-        delay();
-        delay();
-        delay();
-        delay();
-        delay();
+        delay();  // 530ms delay
+        delay();  //
+        delay();  //
+        delay();  //
+        delay();  //
     }
 }
 
+/*
+ * ~106ms delay @11.234MHz
+*/
 void delay(void) {
     int i, j, k, l, m, n;
     for(i = 0; i < 0xff; i++)
