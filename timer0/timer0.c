@@ -43,16 +43,16 @@ void delay_ms(unsigned int ms) {
 void Timer_init() {
     //PCON2 &= 0x00;
     TMOD = 0x01;    /* Timer0 mode1 16-bit */
-    TH0 = 0xfc;     /* 1ms timer value for 12T @11.249MHz */
-    TL0 = 0x56;
+    TH0 = 0xf4;     /* 1ms timer value for 12T @35MHz */
+    TL0 = 0x9b;
     TR0 = 1;        /* Start timer0 */
 }
 
 void Timer0_ISR() __interrupt (1)   /* Timer0 interrupt service routine (ISR) */
 {
     ticks++;
-    TH0 = 0xfc;     /* 1ms timer value */
-    TL0 = 0x56;
+    TH0 = 0xf4;     /* 1ms timer value */
+    TL0 = 0x9b;
 }
 
 void main(void) {
@@ -61,6 +61,8 @@ void main(void) {
     Timer_init();
     while(1) {
         P3 ^= 0x40;
-        delay_ms(343);
+        delay_ms(19);
+        P3 ^= 0x40;
+        delay_ms(1);
     }
 }
