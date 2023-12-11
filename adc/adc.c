@@ -78,7 +78,7 @@ void main() {
         __endasm;
         write_byte(48 + (da_value >> 4));
         write_byte(48 + (da_value & 0x0f));
-        write_byte(adch);
+//        write_byte(adcl);
         write_byte('\n');
         adcbusy = 1;
     }
