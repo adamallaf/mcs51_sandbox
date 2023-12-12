@@ -66,12 +66,21 @@ void main() {
     __endasm;
     for(;;) {
         while(adcbusy);
-        P2 = ~adch; /* For debugging P2 */
+        adc_value = adch;
+        int k = (adc_value >> 5);
+        int i = 1, j = adc_value > 16;
+        for ( ; i < k; i++ )
+            j = j | j << 1;
+        j |= (adc_value > 245) << 7;
+        /*
+         * LED bar on P2, all LEDs are on
+         * when ADC input at max V, ~0V LEDs off
+        */
+        P2 = ~j;
         write_byte('A');
         write_byte('D');
         write_byte('C');
         write_byte('=');
-        adc_value = adch;
         write_byte(hexdec[adc_value >> 4]);
         write_byte(hexdec[adc_value & 0x0f]);
 //        write_byte(adcl);
