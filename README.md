@@ -2,6 +2,11 @@
 
 STC/IAP/IRC 8051 MCU sandbox.
 
+Start with installing `sdcc`.
+
+Next, run `sh install_stcgal.sh`, this will create python virtualenv
+ and install stcgal.
+
 ### stcgal: ###
 
 * https://github.com/grigorig/stcgal
