@@ -1,2 +1,4 @@
-sdcc -mmcs51 test.c || exit
-packihx test.ihx > test.hex
+mkdir -p build/
+rm -vrf build/hello.*
+(cd build && sdcc -mmcs51 ../hello.c || exit)
+packihx build/hello.ihx > hello.hex
