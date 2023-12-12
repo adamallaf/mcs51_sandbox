@@ -28,7 +28,13 @@ volatile uint8_t rxbusy;
 volatile uint8_t adcbusy;
 volatile uint8_t adch;
 volatile uint8_t adcl;
-volatile uint8_t da_value;
+uint8_t adc_value;
+uint8_t hexdec[16] = {
+    '0', '1', '2', '3',
+    '4', '5', '6', '7',
+    '8', '9', 'a', 'b',
+    'c', 'd', 'e', 'f',
+};
 
 void write_byte(uint8_t data);
 
@@ -65,19 +71,9 @@ void main() {
         write_byte('D');
         write_byte('C');
         write_byte('=');
-        /* Decimal adjust adch
-         * this converts adch value to BCD
-         * and its resolution is 2 digits, so the range is 0-99
-         * need to figure out how to make it 0-9999
-         * and need to make it to work as atoi()
-        */
-        __asm
-          MOV a, _adch
-          DA a
-          MOV _da_value, a
-        __endasm;
-        write_byte(48 + (da_value >> 4));
-        write_byte(48 + (da_value & 0x0f));
+        adc_value = adch;
+        write_byte(hexdec[adc_value >> 4]);
+        write_byte(hexdec[adc_value & 0x0f]);
 //        write_byte(adcl);
         write_byte('\n');
         adcbusy = 1;
