@@ -1,2 +1,4 @@
-sdcc -mmcs51 adc.c || exit
-packihx adc.ihx > adc.hex
+mkdir -p build/
+rm -vrf build/adc.*
+(cd build && sdcc -mmcs51 ../adc.c || exit)
+packihx build/adc.ihx > adc.hex
