@@ -3,7 +3,7 @@ A simple uart test, the MCU must send back what it recieves.
 ../stcgal-pyenv/bin/python test_uart.py
 """
 
-from time import sleep
+import time
 
 from serial import Serial
 
