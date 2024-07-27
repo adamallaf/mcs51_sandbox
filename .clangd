@@ -1,0 +1,7 @@
+CompileFlags:
+  Add: [
+    -lncurses,
+    -ltinfo,
+    -Iinclude,
+    --include=bar.h,
+  ]
