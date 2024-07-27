@@ -15,7 +15,7 @@ if __name__ == "__main__":
         while True:
             b = s.readline()
             if b:
-                print(b.decode()[:-1], end="\r")
+                print(f"{b.decode()[:-1]: <30}", end="\r")
     finally:
         s.close()
         print()
