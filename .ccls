@@ -1,0 +1,5 @@
+clang
+-mmcs51
+%c -std=c11
+%h %hpp
+-I/usr/share/sdcc/include/mcs51

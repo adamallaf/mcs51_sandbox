@@ -1,7 +1,10 @@
+If:
+  PathMatch: .*\.c
+
 CompileFlags:
   Add: [
-    -lncurses,
-    -ltinfo,
-    -Iinclude,
-    --include=bar.h,
+    -Wall,
+    -I/usr/share/sdcc/include/mcs51,
+    --include=/usr/share/sdcc/include/mcs51/lint.h,
+    --include=/usr/share/sdcc/include/mcs51/mcs51reg.h
   ]

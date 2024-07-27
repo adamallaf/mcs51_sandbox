@@ -4,7 +4,7 @@ char n = 0x40; // P3.6
 
 void delay(void);
 
-void main(void) {
+int main(void) {
 	while ( 1 ) {
 		P3 |= n;
 		delay(); // 530ms delay
@@ -19,6 +19,7 @@ void main(void) {
 		delay(); //
 		delay(); //
 	}
+	return 1;
 }
 
 /*
