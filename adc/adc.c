@@ -54,7 +54,14 @@ void main() {
 	IE = 0xa0; /* Enable ADC interrupt, start A/D conversion */
 	EA = 1;    /* Enable global interrupt */
 
-	__asm NOP NOP NOP NOP __endasm;
+	/*
+	__asm
+	  NOP
+	  NOP
+	  NOP
+	  NOP
+	__endasm;
+	*/
 	for ( ;; ) {
 		while ( adcbusy )
 			;
